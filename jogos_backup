@@ -1,0 +1,92 @@
+--
+-- PostgreSQL database dump
+--
+
+\restrict bwueA1aXf3TCSkh5fu4GmQxPsVSSEeiLhbDFlWBiMcHIO8mZ5UcaGNmuQfhj5vP
+
+-- Dumped from database version 18.1
+-- Dumped by pg_dump version 18.1
+
+-- Started on 2026-11-10 16:32:21
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET transaction_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET xmloption = content;
+SET client_min_messages = warning;
+SET row_security = off;
+
+--
+-- TOC entry 2 (class 3079 OID 17412)
+-- Name: uuid-ossp; Type: EXTENSION; Schema: -; Owner: -
+--
+
+CREATE EXTENSION IF NOT EXISTS "uuid-ossp" WITH SCHEMA public;
+
+
+--
+-- TOC entry 5022 (class 0 OID 0)
+-- Dependencies: 2
+-- Name: EXTENSION "uuid-ossp"; Type: COMMENT; Schema: -; Owner: 
+--
+
+COMMENT ON EXTENSION "uuid-ossp" IS 'generate universally unique identifiers (UUIDs)';
+
+
+SET default_tablespace = '';
+
+SET default_table_access_method = heap;
+
+--
+-- TOC entry 220 (class 1259 OID 17423)
+-- Name: jogo; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.jogo (
+    id uuid DEFAULT public.uuid_generate_v4() NOT NULL,
+    titulo character varying(150) NOT NULL,
+    plataforma character varying(150) NOT NULL,
+    preco numeric(10,2) NOT NULL,
+    data_lancamento date NOT NULL
+);
+
+
+ALTER TABLE public.jogo OWNER TO postgres;
+
+--
+-- TOC entry 5016 (class 0 OID 17423)
+-- Dependencies: 220
+-- Data for Name: jogo; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.jogo (id, titulo, plataforma, preco, data_lancamento) FROM stdin;
+33b9f37a-b7cb-4b25-93e5-5237580778a8	call of duty modern warfare 4	console	299.00	2026-10-21
+911fbf67-85c4-4641-bad7-4a55560e5c44	gta VI	console	499.00	2026-11-19
+1f64b232-5783-4fd5-98c2-d7659ae8fb98	call of duty black ops 2	console	99.00	2012-09-21
+3d4d5f70-362b-4722-b491-5680c80f6225	forza horizon 6	console	199.00	2026-03-20
+964b1453-4d6e-44e0-9855-84bc6c040e0f	minecraft	console	99.00	2011-06-10
+\.
+
+
+--
+-- TOC entry 4868 (class 2606 OID 17433)
+-- Name: jogo jogo_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.jogo
+    ADD CONSTRAINT jogo_pkey PRIMARY KEY (id);
+
+
+-- Completed on 2026-11-10 16:32:21
+
+--
+-- PostgreSQL database dump complete
+--
+
+\unrestrict bwueA1aXf3TCSkh5fu4GmQxPsVSSEeiLhbDFlWBiMcHIO8mZ5UcaGNmuQfhj5vP
+
